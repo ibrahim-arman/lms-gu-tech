@@ -1,0 +1,12 @@
+{
+  "name": "gutech-lms",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["Frontend", "Backend"],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev --workspace Backend\" \"npm run dev --workspace Frontend\"",
+    "build": "npm run build --workspace Backend && npm run build --workspace Frontend",
+    "typecheck": "npm run typecheck --workspace Backend && npm run typecheck --workspace Frontend"
+  },
+  "devDependencies": { "concurrently": "^9.1.2", "typescript": "^5.7.3" }
+}
