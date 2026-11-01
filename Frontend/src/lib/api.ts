@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 
-const baseUrl = import.meta.env.VITE_API_URL || 'https://gutech-lms-apiog.vercel.app/api';
+const baseUrl = 'https://gutech-lms-apiog.vercel.app/api';
 async function request(path: string, init: RequestInit = {}) {
   const { data: { session } } = await supabase?.auth.getSession() ?? { data: { session: null } };
   const response = await fetch(`${baseUrl}${path}`, { ...init, headers: { 'Content-Type': 'application/json', ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}), ...init.headers } });
